@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="header.html :: header">
+<meta charset="utf-8">
+<title>Alquileres</title>
+</head>
+<body>
+<center>
+	<br>
+	<span th:if="${comprado}==1">
+		<div style="width:50%;" class="alert alert-success" role="alert">
+		  Juego alquilado con exito!
+		</div>
+	</span>
+	<br><br>
+	<h1 style="color:#fff">Tus alquileres</h1>
+	<br>
+	<div style="width:50%;">
+		<table class="table">
+		  	<thead style="background-color: #e2c9e1;">
+			    <tr>
+			      <th scope="col">Juego</th>
+			      <th scope="col">Comprador</th>
+			      <th scope="col">Fecha</th>
+			    </tr>
+			</thead>
+		 	<tbody>
+			    <tr th:each="alquiler: ${alquileres}"> 
+			      <td class= tds><span th:text=${alquiler.juego.titulo}></span></td>
+			      <td class= tds><span th:text="${alquiler.user.nombre}"></span></td>
+			      <td class= tds><span th:text="${alquiler.fecha}"></span></td>
+			    </tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+</center>
+</body>
+<span th:replace="header.html :: footer"></span>
+</html>

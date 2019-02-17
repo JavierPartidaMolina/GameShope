@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Plataformas</title>
+<head th:replace="header.html :: header">
+<body>
+<br>
+<center>
+
+	<div style="width:30%;">
+		<table class="table">
+		  	<thead style="background-color: #e2c9e1;">
+			    <tr>
+			      <th scope="col">Plataforma</th>
+			      <th scope="col">Opciones</th>
+			    </tr>
+			</thead>
+		 	<tbody>
+			    <tr th:each="plataforma: ${plataformas}"> 
+			      <td class= tds><span th:text=${plataforma.nombre}></span></td>
+			      <td class= tds>
+			      	<a  th:href="@{/plataformas/editPlataformas/} + ${plataforma.id}" class="btn btn-info"> Editar</a>
+			      	<a style="color:#fff;" th:href="@{/plataformas/removePlataformas/} + ${plataforma.id}" class="btn btn-danger">
+					<span><i class="fa fa-trash"></i></span>
+			      	</a>
+			      </td>
+			    </tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<a th:href="@{/plataformas/addPlataformas/}" class="btn btn-primary">Añadir</a>
+</center>
+</body>
+<span th:replace="header.html :: footer"></span>
+</html>

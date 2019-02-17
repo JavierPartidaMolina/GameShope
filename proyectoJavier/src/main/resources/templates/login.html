@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+<head th:replace="header.html :: header">
+<body>
+	<center>
+		<br><br><br>
+		<div class="alert alert-success" style="width:40%;"  th:if="${registrar==2}">Usuario registrado correctamente</div>
+
+		<div class="alert alert-danger" style="width:40%;" th:if="${error!=null}">Lo sentimos, las credenciales no coinciden con ningun usuario registrado</div>
+		<form th:action="@{/logincheck}" method="POST">
+			<div style="width:40%;" class="input-group mb-3">
+		  		<div class="input-group-prepend">
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+					<span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+				</div>
+				<input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="username" id="username"/>
+			</div>
+			<div style="width:40%;" class="input-group mb-3">
+		  		<div class="input-group-prepend">
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+					<span class="input-group-text" id="basic-addon1"><i class="fa fa-key"></i></span>
+				</div>
+				<input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" name="password" id="password"/>
+			</div>
+			<button class="btn btn-info" type="submit">Iniciar Sesion</button>
+		</form>
+		<br>
+		<a class="btn btn-secondary"  th:href="@{/log/registro}">Registrate</a>
+	</center>
+</body>
+<span th:replace="header.html :: footer"></span>
+</html>

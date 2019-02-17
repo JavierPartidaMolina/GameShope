@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Noticia</title>
+<head th:replace="header.html :: header">
+<body>
+	<br>
+	<center>
+		<div class="accordion" id="accordionExample">
+		  <div style="width:50%;" class="card">
+		    <div class="card-header" id="headingOne">
+		      <h5 class="mb-0">
+		        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		          <p th:text="${noticiasModel.titulo}"></p>
+		        </button>
+		      </h5>
+	    	</div>
+	    	<div style="width:50%;"  id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+	      		<div class="card-body">
+	      			<p th:text="${noticiasModel.cuerpo}" style="text-align:left;"></p>
+	     		 </div>
+	    	</div>
+	  		</div>
+	 	 </div>
+	 	 <div style="width:50%;" class="card"></div>
+	
+</body>
+<span th:replace="header.html :: footer"></span>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Noticias</title>
+<head th:replace="header.html :: header">
+<body>
+	<br>
+	<center>
+		<form action="#" enctype="multipart/form-data" th:action="@{/noticias/addNoticiasForm}" th:object="${noticia}" method="post">
+			<div style="width:60%; background-color:#bababa;">
+				<br>
+				<h4> Añadir nueva noticia:</h4>
+				<br>
+				<div style="width:50%;" class="input-group mb-3">
+			  		<div class="input-group-prepend">
+			    		<span class="input-group-text" id="inputGroup-sizing-default">Título  </span>
+			  		</div>
+			  		<input th:field="*{titulo}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+			
+				<div style="width:50%;" class="input-group mb-3">
+			  		<div class="input-group-prepend">
+			    		<span class="input-group-text" id="inputGroup-sizing-default">Resumen</span>
+			  		</div>
+			  		<input th:field="*{resumen}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+			
+				<div style="width:50%;" class="input-group mb-3">
+			  		<div class="input-group-prepend">
+			    		<span class="input-group-text" id="inputGroup-sizing-default">Cuerpo</span>
+			  		</div>
+			  		<textarea th:field="*{cuerpo}" type="text"  class="form-control" rows="4" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></textarea>
+				</div>
+				<input type="hidden" th:field="*{foto}" th:value="url"> </input>
+			  	<input type="file"  name="file" id="file" />
+			  	
+				<br>
+				<button type="submit" class="btn btn-primary btn-lg">Añadir</button>
+				<br>
+				<br>
+			</div>
+		</form>
+	</center>
+</body>
+<span th:replace="header.html :: footer"></span>
+</html>

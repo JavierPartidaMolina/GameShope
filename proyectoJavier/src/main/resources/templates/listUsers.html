@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Usuarios</title>
+<head th:replace="header.html :: header">
+<br>
+<center>
+	<div style="width:60%;">
+		<table class="table">
+		  	<thead style="background-color: #e2c9e1;">
+			    <tr>
+			      <th scope="col">Usuario</th>
+			      <th scope="col">Nombre</th>
+			      <th scope="col">Email</th>
+			      <th scope="col">Telefono</th>
+			      <th scope="col">Opciones</th>
+			    </tr>
+			</thead>
+		 	<tbody>
+			    <tr th:each="user: ${users}"> 
+			      <td class= tds><span th:text=${user.username}></span></td>
+			      <td class= tds><span th:text=${user.nombre}> </span></td>
+			      <td class= tds><span th:text=${user.email}></span></td>
+			      <td class= tds><span th:text=${user.telefono}></span></td>
+			      <td class= tds>
+			      	<a style="color:#fff; width:67%;" th:href="@{/users/habilitar/} + ${user.username}" th:if="${!user.isEnabled()}" class="btn btn-success"> Habilitar</a>
+			      	<a  th:if="${user.isEnabled()}" th:href="@{/users/deshabilitar/} + ${user.username}" class="btn btn-warning"> Deshabilitar</a>
+			      	<a style="color:#fff;" th:href="@{/users/eliminar/} + ${user.username}" class="btn btn-danger">
+					<span><i class="fa fa-trash"></i></span>
+			      	</a>
+			      </td>
+			    </tr>
+			</tbody>
+		</table>
+	</div>
+</center>
+<body>
+
+</body>
+<span th:replace="header.html :: footer"></span>
+</html>

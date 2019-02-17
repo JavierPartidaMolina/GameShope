@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Juegos</title>
+<head th:replace="header.html :: header">
+<body>
+	<br>
+	<center>
+		<form action="#" enctype="multipart/form-data" th:action="@{/juegos/addJuegosform}" th:object="${juego}" method="post">
+			<div style="width:60%; text-align:center;  background-color:#bababa;">
+				<br>
+				<h4> Añadir nuevo juego:</h4>
+				<br>
+				<table class="table">
+				  <thead>
+				    <tr>
+				      <th scope="col"><p>Título</p>
+				      	<center>
+						<div style="width:50%;" class="input-group mb-3">
+					  		<input th:field="*{titulo}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+						</div>
+						</center>
+					  </th>
+				      <th scope="col">
+						<p>Descripción</p>
+						<center>
+						<div style="width:50%;" class="input-group mb-3">
+					  		<input th:field="*{descripcion}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+						</div>
+						</center>
+					 </th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td>
+				      	<p>Precio</p>
+				      	<center>
+						<div style="width:50%;" class="input-group mb-3">
+					  		<input th:field="*{precio}" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+						</div>
+						</center>
+				      </td>
+				      <td>
+				      	<p>Lanzamiento</p>
+				      	<center>
+						<div style="width:50%;" class="input-group mb-3">
+					  		<input th:field="*{lanzamiento}" type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+						</div>
+						</center>
+				      </td>
+				    </tr>
+				    <tr>
+				      <td>
+				      	<p>Pegi</p>
+				      	<center>
+						<div style="width:50%;" class="input-group mb-3">
+					  		<select th:field="*{pegi}" class="form-control" >
+					   	   		<option th:value="0" th:text= "PEGUI_OK"> </option>
+					   	   		<option th:value="3" th:text= "3"> </option>
+					   	   		<option th:value="7" th:text= "7"> </option>
+					   	   		<option th:value="12" th:text= "12"> </option>
+					   	   		<option th:value="16" th:text= "16"> </option>
+					   	   		<option th:value="18" th:text= "18"> </option>
+					   	   	</select>
+						</div>
+						</center>
+				      </td>
+				      <td>
+				      	<p>Stock Inicial</p>
+				      	<center>
+						<div style="width:50%;" class="input-group mb-3">
+					  		<input th:field="*{stock}" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+						</div>
+						</center>
+				      </td>
+				    </tr>
+				    <tr>
+				      <td>
+				      	<p>Plataformas</p>
+				      	<center>
+						<div style="width:50%;" class="input-group mb-3">
+					  		<select multiple="true" th:field="*{plataformas}" class="form-control" >
+					   	   		<option th:each="plataform: ${plataforma}"  th:value="${plataform.nombre}" th:text= "${plataform.nombre}"> </option>
+					   	   	</select>
+					   	   	</center>
+						</div>
+				      </td>
+				      <td>
+				      	<p>Categorias</p>
+				      	<center>
+						<div style="width:50%;" class="input-group mb-3">
+					  		<select multiple="true" th:field="*{categorias}" class="form-control" >
+					   	   		<option th:each="categori: ${categoria}"  th:value="${categori.nombre}" th:text= "${categori.nombre}"> </option>
+					   	   	</select>
+						</div>
+						</center>
+				      </td>
+				    </tr>
+				    <tr>
+				      <td>
+				      	<p>tipo</p>
+				      	<center>
+						<div style="width:50%;" class="input-group mb-3">
+					  		<select  th:field="*{tipo}" class="form-control" >
+					   	   		<option  th:value="0" th:text= "Venta"> </option>
+					   	   		<option  th:value="1" th:text= "Alquiler"> </option>
+					   	   	</select>
+						</div>
+						</center>
+				      </td>
+				      <td>
+				      	<p>Carátula</p>
+						<input type="hidden" th:field="*{caratula}" th:value="url"> </input>
+					  	<input  type="file"  name="file" id="file" >
+				      </td>
+				    </tr>
+				  </tbody>
+				</table>
+
+				<br>
+				<button type="submit" class="btn btn-primary btn-lg">Añadir</button>
+				<br>
+				<br>
+			</div>
+			
+		</form>
+  	</center>
+	<br>
+</body>
+<span th:replace="header.html :: footer"></span>
+</html>

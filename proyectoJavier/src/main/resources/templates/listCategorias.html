@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Categorias</title>
+<head th:replace="header.html :: header">
+<body>
+<br>
+<center>
+
+	<div style="width:30%;">
+		<table class="table">
+		  	<thead style="background-color: #e2c9e1;">
+			    <tr>
+			      <th scope="col">Categoria</th>
+			      <th scope="col">Opciones</th>
+			    </tr>
+			</thead>
+		 	<tbody>
+			    <tr th:each="categoria: ${categorias}"> 
+			      <td class= tds><span th:text=${categoria.nombre}></span></td>
+			      <td class= tds>
+			      	<a  th:href="@{/categorias/editCategorias/} + ${categoria.id}" class="btn btn-info"> Editar</a>
+			      	<a style="color:#fff;" th:href="@{/categorias/removeCategorias/} + ${categoria.id}" class="btn btn-danger">
+					<span><i class="fa fa-trash"></i></span>
+			      	</a>
+			      </td>
+			    </tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<a th:href="@{/categorias/addCategorias/}" class="btn btn-primary">Añadir</a>
+</center>
+</body>
+<span th:replace="header.html :: footer"></span>
+</html>

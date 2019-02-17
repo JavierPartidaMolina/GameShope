@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="header.html :: header">
+<meta charset="utf-8">
+<title>Participaciones</title>
+</head>
+<body>
+
+<center>
+	<br>
+	<div class="alert alert-success" style="width:40%;"  th:if="${registrar==2}">Usuario registrado correctamente</div>
+	<div class="alert alert-success" style="width:40%;"  th:if="${participa==1}">Apuntado al torneo correctamente</div>
+	<div class="alert alert-success" style="width:40%;"  th:if="${participa==2}">Posición asignada correctamente</div>
+	<br>
+	<div style="width:50%;">
+		<table class="table">
+		  	<thead style="background-color: #e2c9e1;">
+			    <tr>
+			      <th scope="col">Competicion</th>
+			      <th scope="col">Usuario</th>
+			      <th scope="col">Posición</th>
+			    </tr>
+			</thead>
+		 	<tbody>
+			    <tr th:each="Participacion: ${Participaciones}"> 
+			      <td class= tds><span th:text=${Participacion.competicion.nombre}></span></td>
+			      <td class= tds><span th:text="${Participacion.user.nombre}"></span></td>
+			      <span th:if="${asignar} == 1">
+			      	<span th:if="${Participacion.posicion} == 0">
+				      	<td style="width:35%;">     		
+				      		<form action="#" th:action="@{/Participaciones/addParticipacionesForm2/} + ${Participacion.id}" th:object="${part}" method="post">
+				      			<input th:field="*{posicion}" style="width:20%;" type="number"/>
+				      			<button class="btn btn-primary" type="submit" >Asignar</button> 		
+				      		</form>
+				      	</td>
+				     </span>
+				     <span th:if="${Participacion.posicion} != 0">
+				     	<td class= tds><span th:text="${Participacion.posicion}"></span>º</td>
+				     </span>
+			      </span>
+			      <span th:if="${asignar} == 0">
+				      <span th:if="${Participacion.posicion} == 0">
+				      	<td class= tds>Sin asignar</td>
+				      </span>
+				      <span th:if="${Participacion.posicion} != 0">
+				      	<td class= tds><span th:text="${Participacion.posicion}"></span>º</td>
+				      </span>
+				     </span>
+			    </tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+
+</center>
+</body>
+<span th:replace="header.html :: footer"></span>
+</html>

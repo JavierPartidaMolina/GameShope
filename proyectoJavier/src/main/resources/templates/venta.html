@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="header.html :: header">
+<meta charset="utf-8">
+<title>Juegos</title>
+</head>
+<body>
+<br>
+	<center>
+
+		<div class="container">
+			<div class="grid-container">
+				<span th:each="juego: ${juegos}">
+				<br>
+					<a class="divVenta" style="text-decoration:none; color:#000" th:href="@{/juegos/verJuego/} + ${juego.id}">
+					<div class="row" style=" display: flex; justify-content: center; align-items: center;">
+					 <div class="col-sm-4">
+					    <div class="card cardjuegos">
+					      <div class="card-body">
+					        <h5 class="card-title"><span th:text=${juego.titulo}>Titulo</span></h5>
+					         <span th:if="!${juego.getCaratula().isEmpty()}" ><img class="imagenesJuegos" th:src="@{/images/} + ${juego.caratula}"/></span>
+					        <br>
+					        <br>
+					        Precio:
+					        <span th:text="${juego.precio}"></span>€
+					 	  </div>
+						</div>
+				  	</div>
+				  </div>
+				  	<br>
+				  	</a>
+
+			  	</span>
+		  	</div>
+	  	<br>
+	  	</div>
+  	</center>
+
+</body>
+<span th:replace="header.html :: footer"></span>
+</html>

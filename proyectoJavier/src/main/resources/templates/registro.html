@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>registro</title>
+<head th:replace="header.html :: header">
+<body>
+	<center>
+		<br><br>
+		<center><h3> Formulario de registro</h3></center>
+		<br>
+		<form th:action="@{/log/registrar}" th:object="${usuario}" method="post">
+		<div class="alert alert-danger" style="width:40%;" th:if="${registrar==1}">Lo sentimos, este usuario ya existe</div>
+		<div class="alert alert-danger" style="width:40%;" th:if="${registrar==3}">Debes rellenar todos los campos</div>
+			<div style="width:40%;" class="input-group mb-3">
+		  		<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+				</div>
+				<input type="text" th:field="*{username}" class="form-control" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1" name="username" id="username"/>
+			</div>
+			<div style="width:40%;" class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+				</div>
+				<input type="text" th:field="*{nombre}" class="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1" name="nombre" id="nombre"/>
+			</div>
+			<div style="width:40%;" class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+				</div>
+				<input type="text" th:field="*{apellidos}" class="form-control" placeholder="Apellidos" aria-label="Apellidos" aria-describedby="basic-addon1" name="apellidos" id="apellidos"/>
+			</div>
+			<div style="width:40%;" class="input-group mb-3">
+		  		<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1"><i class="fa fa-key"></i></span>
+				</div>
+				<input type="password" th:field="*{password}" class="form-control" placeholder="Contraseña" aria-label="Password" aria-describedby="basic-addon1" name="password" id="password"/>
+			</div>
+			<div style="width:40%;" class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1"><i class="fa fa-phone"></i></span>
+				</div>
+				<input type="text" th:field="*{telefono}" class="form-control" placeholder="Telefono" aria-label="Telefono" aria-describedby="basic-addon1" name="telefono" id="telefono"/>
+			</div>
+			<div style="width:40%;" class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1">@</span>
+				</div>
+				<input type="email" th:field="*{email}" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" name="email" id="email"/>
+			</div>
+			<button class="btn btn-info" type="submit">Registrar</button>
+		</form>
+	</center>
+</body>
+<span th:replace="header.html :: footer"></span>
+</html>

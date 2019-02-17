@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Perfil</title>
+<head th:replace="header.html :: header">
+<body>
+<br>
+	<center>
+		<div class="alert alert-success" style="width:40%;"  th:if="${editar==1}">Usuario editado correctamente</div>
+		<div class="alert alert-danger" style="width:40%;"  th:if="${editar==2}">Debes usar tu contraseña o una nueva</div>
+		<div class="alert alert-danger" style="width:40%;"  th:if="${alquiler==1}">Algún alquiler a pasado de fecha, serás penalizado...</div>
+	</center>
+<br>
+	<center>
+	<br>
+	<a class="btn btn-primary" th:href="@{/ventas/comprasUser}" style="color:#fff">Compras</a> &nbsp;&nbsp; <a th:href="@{/alquiler/alquileresUser}" class="btn btn-warning">Alquileres</a>
+	&nbsp;&nbsp; <a class="btn btn-secondary" th:href="@{/Participaciones/listadouser}" style="color:#fff">Participaciones</a>
+	<br><br>
+	<form action="#"  th:action="@{/users/editperfil}" th:object="${user}" method="post">
+	<div style="width:40%;" class="input-group mb-3">
+  		<div class="input-group-prepend">
+			<span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+		</div>
+		<input type="text"  th:value="${user.getUsername()}" class="form-control" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1" name="username" id="username" readonly/>
+	</div>
+	
+	<div style="width:40%;" class="input-group mb-3">
+		<div class="input-group-prepend">
+			<span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+		</div>
+		<input type="text"  th:value="${user.getNombre()}" class="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1" name="nombre" id="nombre" />
+	</div>
+	
+	<div style="width:40%;" class="input-group mb-3">
+		<div class="input-group-prepend">
+			<span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+		</div>
+		<input type="text" th:value="${user.getApellidos()}" class="form-control" placeholder="Apellidos" aria-label="Apellidos" aria-describedby="basic-addon1" name="apellidos" id="apellidos" />
+	</div>
+
+	<input type="hidden"  th:value="${user.getPassword()}" class="form-control" placeholder="Contraseña" aria-label="Password" aria-describedby="basic-addon1" name="password" id="password" />
+	
+	<div style="width:40%;" class="input-group mb-3">
+		<div class="input-group-prepend">
+			<span class="input-group-text" id="basic-addon1"><i class="fa fa-phone"></i></span>
+		</div>
+		<input type="text"  th:value="${user.getTelefono()}" class="form-control" placeholder="Telefono" aria-label="Telefono" aria-describedby="basic-addon1" name="telefono" id="telefono"/>
+	</div>
+	
+	<div style="width:40%;" class="input-group mb-3">
+		<div class="input-group-prepend">
+			<span class="input-group-text" id="basic-addon1">@</span>
+		</div>
+		<input type="email" th:value="${user.getEmail()}" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" name="email" id="email"/>
+	</div>
+	
+	<br>
+	
+	<button type="submit" class="btn btn-info">Editar</button>
+	<br>
+	</form>
+	<a class="btn btn-secundary" th:href="@{'/proyecto/home'}">Volver</a>
+	</center>
+	
+</body>
+<span th:replace="header.html :: footer"></span>
+</html>
